@@ -1,30 +1,49 @@
 {
-  "name": "openai-waweb",
+  "name": "whatsapp-bot-chatgpt-java",
   "version": "1.0.0",
-  "description": "",
+  "description": "WhatsApp Auto Replay Bot ChatGpt Using Java",
   "main": "index.js",
   "scripts": {
-    "start:dev": "npx nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "termux",
+    "whatsapp-openai",
+    "whatsapp-openai",
+    "whatsapp-bot",
+    "whatsapp-baileys",
+    "baileys-md",
+    "bot-wa",
+    "bot-md",
+    "whatsapp-multi-device"
+  ],
+  "base": "https://github.com/rishabhsahil",
+  "author": "rishabhsahil",
+  "license": "MIT",
   "dependencies": {
-    "dotenv": "^16.0.3",
+    "@adiwajshing/baileys": "4.4.0",
+    "@adiwajshing/keyed-db": "^0.2.4",
+    "awesome-phonenumber": "^2.64.0",
+    "chalk": "^4.1.2",
+    "crypto": "^1.0.1",
+    "figlet": "^1.5.2",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.21",
     "openai": "^3.1.0",
-    "python-shell": "^5.0.0",
+    "pino": "^7.0.5",
     "qrcode-terminal": "^0.12.0",
-    "whatsapp-web.js": "^1.19.4"
+    "util": "^0.12.4"
   },
-  "devDependencies": {
-    "@types/node": "^18.11.18",
-    "@types/qrcode-terminal": "^0.12.0",
-    "@typescript-eslint/eslint-plugin": "^5.48.2",
-    "@typescript-eslint/parser": "^5.48.2",
-    "eslint": "^8.32.0",
-    "eslint-plugin-simple-import-sort": "^9.0.0",
-    "nodemon": "^2.0.20",
-    "typescript": "^4.9.4"
-  }
+  "directories": {
+    "lib": "lib",
+    "src": "src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RishabhSahil/WhatsApp-Bot-ChatGpt-Java.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RishabhSahil/WhatsApp-Bot-ChatGpt-Java/issues"
+  },
+  "homepage": "https://github.com/RishabhSahil/WhatsApp-Bot-ChatGpt-Java/blob/main/README.md"
 }
