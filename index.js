@@ -146,18 +146,16 @@ function man(){
                         noCache: true
                     }).then(response => {
                         for (let i = 0; i <= 9; i++) {
-                                const newses = "News: "+1+"\n\n*Link:-* "+newsurl+"\n*Title:* "+response['articles'][i]['title']+"\n*Description:* "+response['articles'][i]['description']+"\n*Content:* "+response['articles'][i]['content']+"\n\n*Date:- "+response['articles'][i]['publishedAt']+"*"
-                                const newsurl = response['articles'][i]['url']
+                                const newses = "News: "+i+"\n\n*Link:-* "+response['articles'][i]['url']+"\n*Title:* "+response['articles'][i]['title']+"\n*Description:* "+response['articles'][i]['description']+"\n*Content:* "+response['articles'][i]['content']+"\n\n*Date:- "+response['articles'][i]['publishedAt']+"*"
                                 const newsimgurl = response['articles'][i]['urlToImage']
                                 console.log("\n\n"+newses)
-                                message.reply(newses)
-                                    
+                                message.sendMessage(newses)                  
                         }
                     });
                 }catch(err) {
                     message.reply("*Sir there is an error so now we have to wait till RISHABH sir solve this error...!!*");
                     console.log("Error");
-                  }
+                }
             }
             else if (message.body.toLowerCase().includes("what") || message.body.toLowerCase().includes("how")) {
                 let text = message.body;
@@ -184,5 +182,29 @@ function man(){
         console.log("Error");
       }
 }
+
+function sendnew(){
+    try {
+    newsapi.v2.everything({
+        sources: 'bbc-news'
+    }, {
+        noCache: true
+    }).then(response => {
+        for (let i = 0; i <= 9; i++) {
+                const newses = "News: "+1+"\n*Title:* "+response['articles'][i]['title']+"\n*Description:* "+response['articles'][i]['description']+"\n*Content:* "+response['articles'][i]['content']+"\n\n*Date:- "+response['articles'][i]['publishedAt']+"*"
+                const newsurl = response['articles'][i]['url']
+                const newsimgurl = response['articles'][i]['urlToImage']
+                console.log("\n\n"+newses)
+                console.log("\n\n*Link:-* "+newsurl)
+                console.log("\n\nImg:- "+newsimgurl)
+                    
+        }
+    });
+}catch(err) {
+    message.reply("*Sir there is an error so now we have to wait till RISHABH sir solve this error...!!*");
+    console.log("Error");
+  }
+}
+
 
 man();
