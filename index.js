@@ -149,7 +149,8 @@ function man(){
                                 const newses = "News: "+i+"\n\n*Link:-* "+response['articles'][i]['url']+"\n*Title:* "+response['articles'][i]['title']+"\n*Description:* "+response['articles'][i]['description']+"\n*Content:* "+response['articles'][i]['content']+"\n\n*Date:- "+response['articles'][i]['publishedAt']+"*"
                                 const newsimgurl = response['articles'][i]['urlToImage']
                                 console.log("\n\n"+newses)
-                                message.sendMessage(newses)                  
+                                message.reply(newses)
+                                    
                         }
                     });
                 }catch(err) {
