@@ -4,13 +4,18 @@
 ## Get & Change OpenAI ApiKey
 
 - [OpenAi](https://beta.openai.com/account/api-keys) Api-Key
-## Install
+
+## Get & Change News ApiKey
+- [News](https://newsapi.org/) Api-Key
 
 **Replace your api key** 
 - File:- key.json
 - {
--    "keyopenai" : "Api-Key" 👈 replace your api key
+-    "keyopenai" : "Api-Key", 👈 replace your openai api key
+-    "newsapikey": "Api-Key" 👈 replace your news api key
 - }
+
+## Install
 
 **Install on RDP/Windows ✅**
 
