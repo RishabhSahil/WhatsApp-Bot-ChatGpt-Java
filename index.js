@@ -35,29 +35,41 @@ client.on("qr", qr => {
 })
 
 client.on('ready', () => {
-    console.log("Ready To Message\n\n")
+    console.log("Ready To Message\n\n");
+      // Number where you want to send the message.
+    const number = "+918709664805";
+
+    // Your message.
+    const text = setting.jarvison+setting.sitelink+"\n\n"+setting.developer;
+
+    // Getting chatId from the number.
+    // we have to delete "+" from the beginning and add "@c.us" at the end of the number.
+    const chatId = number.substring(1) + "@c.us";
+
+    // Sending message.
+    client.sendMessage(chatId, text);
 });
 
 function man(){
     try {
         client.on('message', async message => {
             console.log("Human: "+message.body.toLowerCase())
-            if(message.body.includes('*') || message.body.includes('.')) {
+            if(message.body[0] === "*" || message.body[0] === ".") {
                 let text = message.body.split('*')[1] ||  message.body.split('.')[1];
                 var qst = `Human: ${text}\nJarvis:`;
                 const response = await openai.createCompletion({
                     model: "text-davinci-003",
                     prompt: qst,
-                    temperature: 0,
-                    max_tokens: 300,
-                    top_p: 1.0,
-                    frequency_penalty: 0.0,
-                    presence_penalty: 0.0,
+                    temperature: 0.5,
+                    max_tokens: 3000,
+                    top_p: 0.3,
+                    frequency_penalty: 0.5,
+                    presence_penalty: 0,
                 });
                 console.log("Jarvis: "+response.data.choices[0].text+"\n~~RISHABH-SAHIL~~\n\n");
                 message.reply(response.data.choices[0].text);
             }
-            else if(message.body.includes('/draw') || message.body.includes('/create image') || message.body.includes('/ draw') || message.body.includes('/ create image')) {
+            else if(message.body.toLowerCase().includes('/draw') || message.body.toLowerCase().includes('/create image') || message.body.includes('/ draw') || message.body.includes('/ create image')) {
                 message.reply("Okey Wait I am Creating...!!")
                 console.log("Jarvis: Okey Wait I am Creating...!!")
                 let text = message.body.split('/draw')[1] || message.body.split('/create image')[1] || message.body.split('/ draw')[1] || message.body.split('/ create image')[1];
@@ -116,8 +128,24 @@ function man(){
                 message.reply("*Welcome Sir*");
                 console.log("Jarvis: *Welcome*\n\n");
             } 
+            else if (message.body.toLowerCase().includes("what") || message.body.toLowerCase().includes("how")) {
+                let text = message.body;
+                var qst = `Human: ${text}\nJarvis:`;
+                const response = await openai.createCompletion({
+                    model: "text-davinci-003",
+                    prompt: qst,
+                    temperature: 0.5,
+                    max_tokens: 3000,
+                    top_p: 0.3,
+                    frequency_penalty: 0.5,
+                    presence_penalty: 0,
+                });
+                console.log("Jarvis: "+response.data.choices[0].text+"\n~~RISHABH-SAHIL~~\n\n");
+                message.reply(response.data.choices[0].text);
+            }
             else {
-                console.log("Jarvis: *Adding New Features...!!*\n\n");
+                // message.reply("*Hello I am Jarvis Your Assistant.* To know more about me you can help message and know how to use.\n\n *A.I Powered Bot Created By ~~RISHABH-SAHIL~~*");
+                console.log("Jarvis: *Hello I am Jarvis Your Assistant.* To know more about me you can help message and know how to use.\n\n *A.I Powered Bot Created By ~~RISHABH-SAHIL~~*\n\n");
             } 
         });
     } catch(err) {
