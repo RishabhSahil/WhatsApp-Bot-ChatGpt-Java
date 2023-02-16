@@ -14,6 +14,8 @@ const { Configuration, OpenAIApi } = require("openai");
 let setting = require('./key.json');
 const { url } = require('inspector');
 const axios = require('axios'); // npm i axios
+const NewsAPI = require('newsapi'); // npm install newsapi
+const newsapi = new NewsAPI(setting.newsapikey); 
 const configuration = new Configuration({
   apiKey: setting.keyopenai, //'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',
 });
@@ -134,6 +136,28 @@ function man(){
                 .then(res => res.data)
                 const media = await MessageMedia.fromUrl(meme.url);
                 await client.sendMessage(message.from, media)
+            }
+            else if (message.body.toLowerCase()=="send news" || message.body.toLowerCase()=="today news" || message.body.toLowerCase()=="top news" || message.body.toLowerCase()=="news"){
+                message.reply("*Top 10 Headlines*\n\n");
+                try {
+                    newsapi.v2.everything({
+                        sources: 'bbc-news'
+                    }, {
+                        noCache: true
+                    }).then(response => {
+                        for (let i = 0; i <= 9; i++) {
+                                const newses = "News: "+1+"\n\n*Link:-* "+newsurl+"\n*Title:* "+response['articles'][i]['title']+"\n*Description:* "+response['articles'][i]['description']+"\n*Content:* "+response['articles'][i]['content']+"\n\n*Date:- "+response['articles'][i]['publishedAt']+"*"
+                                const newsurl = response['articles'][i]['url']
+                                const newsimgurl = response['articles'][i]['urlToImage']
+                                console.log("\n\n"+newses)
+                                message.reply(newses)
+                                    
+                        }
+                    });
+                }catch(err) {
+                    message.reply("*Sir there is an error so now we have to wait till RISHABH sir solve this error...!!*");
+                    console.log("Error");
+                  }
             }
             else if (message.body.toLowerCase().includes("what") || message.body.toLowerCase().includes("how")) {
                 let text = message.body;
