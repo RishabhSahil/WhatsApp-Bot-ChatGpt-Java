@@ -8,11 +8,12 @@ console.log("\n\nApp-Name:- Jarvis A.I Bot\nDeveloper-Name:- R.S (RISHABH-SAHIL)
 
 const qrcode = require('qrcode-terminal');
 const fs = require("fs")
-const { Client, LegacySessionAuth, LocalAuth, MessageMedia} = require('whatsapp-web.js');
+const { Client, LegacySessionAuth, LocalAuth, MessageMedia} = require('whatsapp-web.js'); // npm i whatsapp-web.js
 const { getSystemErrorMap } = require('util');
-const { Configuration, OpenAIApi } = require("openai");
+const { Configuration, OpenAIApi } = require("openai"); 
 let setting = require('./key.json');
 const { url } = require('inspector');
+const axios = require('axios'); // npm i axios
 const configuration = new Configuration({
   apiKey: setting.keyopenai, //'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',
 });
@@ -128,6 +129,12 @@ function man(){
                 message.reply("*Welcome Sir*");
                 console.log("Jarvis: *Welcome*\n\n");
             } 
+            else if (message.body.toLowerCase()=="memes" || message.body.toLowerCase()=="send memes" || message.body.toLowerCase()=="meme" || message.body.toLowerCase()=="send meme"){
+                const meme = await axios("https://meme-api.com/gimme")
+                .then(res => res.data)
+                const media = await MessageMedia.fromUrl(meme.url);
+                await client.sendMessage(message.from, media)
+            }
             else if (message.body.toLowerCase().includes("what") || message.body.toLowerCase().includes("how")) {
                 let text = message.body;
                 var qst = `Human: ${text}\nJarvis:`;
