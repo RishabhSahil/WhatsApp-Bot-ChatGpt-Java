@@ -1,10 +1,10 @@
 // App-Name:- Jarvis A.I Bot
 // Developer-Name:- R.S (RISHABH-SAHIL)
-// GitHub:- https://github.com/RishabhSahil/whatsapp-bot-type-script
+// GitHub:- https://github.com/RishabhSahil/WhatsApp-Bot-ChatGpt-Java
 // Linkden:- https://www.linkedin.com/in/rishabhsahil/
 // OpenAI-API-KEY:- https://platform.openai.com/
 
-console.log("\n\nApp-Name:- Jarvis A.I Bot\nDeveloper-Name:- R.S (RISHABH-SAHIL)\nGitHub:- https://github.com/RishabhSahil/whatsapp-bot-type-script\nLinkden:- https://www.linkedin.com/in/rishabhsahil/\nOpenAI-API-KEY:- https://platform.openai.com/")
+console.log("\n\nApp-Name:- Jarvis A.I Bot\nDeveloper-Name:- R.S (RISHABH-SAHIL)\nGitHub:- https://github.com/RishabhSahil/WhatsApp-Bot-ChatGpt-Java \nLinkden:- https://www.linkedin.com/in/rishabhsahil/\nOpenAI-API-KEY:- https://platform.openai.com/")
 
 const qrcode = require('qrcode-terminal');
 const fs = require("fs")
