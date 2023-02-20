@@ -1,16 +1,17 @@
 // App-Name:- Jarvis A.I Bot
 // Developer-Name:- R.S (RISHABH-SAHIL)
-// GitHub:- https://github.com/RishabhSahil/WhatsApp-Bot-ChatGpt-Java
+// GitHub:- https://github.com/RishabhSahil/whatsapp-bot-type-script
 // Linkden:- https://www.linkedin.com/in/rishabhsahil/
 // OpenAI-API-KEY:- https://platform.openai.com/
+// News-API-KEY:- https://newsapi.org/
 
-console.log("\n\nApp-Name:- Jarvis A.I Bot\nDeveloper-Name:- R.S (RISHABH-SAHIL)\nGitHub:- https://github.com/RishabhSahil/WhatsApp-Bot-ChatGpt-Java \nLinkden:- https://www.linkedin.com/in/rishabhsahil/\nOpenAI-API-KEY:- https://platform.openai.com/")
+console.log("\n\nApp-Name:- Jarvis A.I Bot\nDeveloper-Name:- R.S (RISHABH-SAHIL)\nGitHub:- https://github.com/RishabhSahil/whatsapp-bot-type-script\nLinkden:- https://www.linkedin.com/in/rishabhsahil/\nOpenAI-API-KEY:- https://platform.openai.com/\nNews-API-KEY:- https://newsapi.org/")
 
-const qrcode = require('qrcode-terminal');
+const qrcode = require('qrcode-terminal'); // npm install qrcode-terminal 
 const fs = require("fs")
 const { Client, LegacySessionAuth, LocalAuth, MessageMedia} = require('whatsapp-web.js'); // npm i whatsapp-web.js
 const { getSystemErrorMap } = require('util');
-const { Configuration, OpenAIApi } = require("openai"); 
+const { Configuration, OpenAIApi } = require("openai"); // npm install openai 
 let setting = require('./key.json');
 const { url } = require('inspector');
 const axios = require('axios'); // npm i axios
@@ -127,17 +128,17 @@ function man(){
                 message.reply("Good Nigt Sir, How can i help you?");
                 console.log("Jarvis: Good Nigt Sir, How can i help you?\n\n");
             }
-            else if (message.body.includes("Thank you") || message.body.toLowerCase()=="thnx") {
-                message.reply("*Welcome Sir*");
-                console.log("Jarvis: *Welcome*\n\n");
-            } 
-            else if (message.body.toLowerCase()=="memes" || message.body.toLowerCase()=="send memes" || message.body.toLowerCase()=="meme" || message.body.toLowerCase()=="send meme"){
+            // else if (message.body.includes("Thank you") || message.body.toLowerCase()=="thnx") {
+            //     message.reply("*Welcome Sir*");
+            //     console.log("Jarvis: *Welcome*\n\n");
+            // } 
+            else if (message.body.toLowerCase()=="memes" || message.body.toLowerCase()=="send me memes" || message.body.toLowerCase()=="send memes" || message.body.toLowerCase()=="meme" || message.body.toLowerCase()=="send meme" || message.body.toLowerCase()=="send mems" || message.body.toLowerCase()=="send me mems" || message.body.toLowerCase()=="mems"){
                 const meme = await axios("https://meme-api.com/gimme")
                 .then(res => res.data)
                 const media = await MessageMedia.fromUrl(meme.url);
                 await client.sendMessage(message.from, media)
             }
-            else if (message.body.toLowerCase()=="send news" || message.body.toLowerCase()=="today news" || message.body.toLowerCase()=="top news" || message.body.toLowerCase()=="news"){
+            else if (message.body.toLowerCase()=="send news" || message.body.toLowerCase()=="send me news" || message.body.toLowerCase()=="send today news" || message.body.toLowerCase()=="send me today news" || message.body.toLowerCase()=="today news" || message.body.toLowerCase()=="send me top news" || message.body.toLowerCase()=="send top news" || message.body.toLowerCase()=="top news" || message.body.toLowerCase()=="news"){
                 message.reply("*Top 10 Headlines*\n\n");
                 try {
                     newsapi.v2.everything({
@@ -146,11 +147,11 @@ function man(){
                         noCache: true
                     }).then(response => {
                         for (let i = 0; i <= 9; i++) {
-                                const newses = "News: "+i+"\n\n*Link:-* "+response['articles'][i]['url']+"\n*Title:* "+response['articles'][i]['title']+"\n*Description:* "+response['articles'][i]['description']+"\n*Content:* "+response['articles'][i]['content']+"\n\n*Date:- "+response['articles'][i]['publishedAt']+"*"
+                                // const newses = "News: "+i+"\n\n*Link:-* "+response['articles'][i]['url']+"\n*Title:* "+response['articles'][i]['title']+"\n*Description:* "+response['articles'][i]['description']+"\n*Content:* "+response['articles'][i]['content']+"\n\n*Date:- "+response['articles'][i]['publishedAt']+"*"
+                                const newses = "Headline: "+i+"\n\n*Link:-* "+response['articles'][i]['url']+"\n*Title:* "+response['articles'][i]['title']+"\n*Description:* "+response['articles'][i]['description']+"\n\n*Date:- "+response['articles'][0]['publishedAt'].slice(0, 10)+" Time:- "+response['articles'][0]['publishedAt'].slice(12, 19)+"*"+ "                           *~~RISHABH-SAHIL~~* "
                                 const newsimgurl = response['articles'][i]['urlToImage']
                                 console.log("\n\n"+newses)
                                 message.reply(newses)
-                                    
                         }
                     });
                 }catch(err) {
