@@ -1,4 +1,3 @@
-
 # WhatsApp Auto Replay Bot ChatGpt Using Java 
 
 ## Get & Change OpenAI ApiKey
@@ -24,9 +23,13 @@ Install [NodeJS](https://nodejs.org/en/download/) dan [Git Bash](https://git-scm
 ```bash
 $ git clone https://github.com/RishabhSahil/WhatsApp-Bot-ChatGpt-Java.git
 $ cd WhatsApp-Bot-ChatGpt-Java
-$ npm install
+$ npm install qrcode-terminal 
+$ npm i whatsapp-web.js 
+$ npm install newsapi 
+$ npm install openai 
 $ node index.js
 ```
+
 # Developer-Name:- [R.S](https://www.instagram.com/_rishabh.sahil_/) ([RISHABH-SAHIL](https://www.instagram.com/_rishabh.sahil_/))
 - GitHub:- [@RishabhSahil](https://github.com/RishabhSahil/whatsapp-bot-type-script)
 - Linkden:- [rishabhsahil](https://www.linkedin.com/in/rishabhsahil/)
